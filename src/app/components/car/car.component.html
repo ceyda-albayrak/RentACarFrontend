@@ -1,6 +1,13 @@
 <div *ngIf="dataLoaded==false" class="spinner-border " role="status">
   <span class="visually-hidden">Loading...</span>
 </div>
+<div class="mb-3">
+  <label for="filterText" class="form-label">Ürünlerde Arama</label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Arama ifadesi giriniz.">
+</div>
+<div *ngIf="filterText" class="alert alert-success">
+{{filterText}} aradınız
+</div>
 <table *ngIf="dataLoaded==true" class="table">
   <thead>
     <tr>
@@ -9,15 +16,20 @@
       <th>Color</th>
       <th>Model Year</th>
       <th>Daily Price</th>
+      <th>VAT Price</th>
       <th>Description</th>
+      <th>Image</th>
     </tr>
   </thead>
-  <tr *ngFor="let car of cars">
-    <td>{{ car.carName }}</td>
+  <tr *ngFor="let car of cars" routerLink="/cars/cardetail/{{car.carId}}">
+    <td >{{ car.carName | uppercase }}</td>
     <td>{{ car.brandName }}</td>
     <td>{{ car.colorName }}</td>
     <td>{{ car.modelYear }}</td>
-    <td>{{ car.dailyPrice }}</td>
+    <td>{{ car.dailyPrice |currency}}</td>
+    <td>{{ car.dailyPrice | vatAdded:10 |currency }}</td>
     <td>{{ car.description }}</td>
+    <img *ngIf="car.carImage.length == 0" class="image" [src]="imgUrl+default">
+    <img *ngIf="car.carImage.length != 0" class="image" alt="Image"  style="object-fit: contain;" [src]="imgUrl + car.carImage[0].imagePath" >
   </tr>
 </table>

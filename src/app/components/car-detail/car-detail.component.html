@@ -1,0 +1,5 @@
+<div *ngFor="let car of cars">
+<img *ngIf="car.carImage.length != 0" class="image" alt="Image"  style="object-fit: contain;" [src]="imgUrl + car.carImage[0].imagePath" >
+<img *ngIf="car.carImage.length>1" class="image" [src]="imgUrl + car.carImage[1].imagePath">
+<img *ngIf="car.carImage.length>2" class="image" [src]="imgUrl + car.carImage[2].imagePath">
+</div>
