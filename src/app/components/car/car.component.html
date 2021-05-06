@@ -1,35 +1,73 @@
-<div *ngIf="dataLoaded==false" class="spinner-border " role="status">
-  <span class="visually-hidden">Loading...</span>
+    <div class="row">
+    <div class="col-md-3">
+          
+      <app-brand></app-brand>
+      
+      <app-color></app-color>
+   </div>
+   <div class="col-md-9">
+    <div *ngIf="dataLoaded == false" class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="mb-3">
+      <label for="filterText" class="form-label">Ürünlerde Arama</label>
+      <input
+        type="text"
+        [(ngModel)]="filterText"
+        class="form-control"
+        id="filterText"
+        placeholder="Arama ifadesi giriniz."
+      />
+    </div>
+    <div *ngIf="filterText" class="alert alert-success">
+      {{ filterText }} aradınız
+    </div>
+    <table *ngIf="dataLoaded == true" class="table">
+      <thead>
+        <tr>
+          <th>Car Name</th>
+          <th>Brand</th>
+          <th>Color</th>
+          <th>Model Year</th>
+          <th>Daily Price</th>
+          <th>VAT Price</th>
+          <th>Description</th>
+          <th>Image</th>
+          <th>Detaylar</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let car of cars | filterPipe: filterText">
+          <td>{{ car.carName | uppercase }}</td>
+          <td>{{ car.brandName }}</td>
+          <td>{{ car.colorName }}</td>
+          <td>{{ car.modelYear }}</td>
+          <td>{{ car.dailyPrice }}₺</td>
+          <td>{{ car.dailyPrice | vatAdded: 10 }}₺</td>
+          <td>{{ car.description }}</td>
+          <img
+            *ngIf="car.carImage.length == 0"
+            class="image"
+            [src]="imgUrl + default"
+          />
+          <img
+            *ngIf="car.carImage.length != 0"
+            class="image"
+            alt="Image"
+            style="object-fit: contain"
+            [src]="imgUrl + car.carImage[0].imagePath"
+          />
+          <td >
+            <button routerLink="/cars/cardetail/{{ car.carId }}" type="button" class="btn btn-primary">Detaylar</button>
+            <button routerLink="/cars/carupdate/{{ car.carId }}" type="button" class="btn btn-warning">Güncelle</button>
+          </td>
+          <td>
+            
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
 </div>
-<div class="mb-3">
-  <label for="filterText" class="form-label">Ürünlerde Arama</label>
-  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Arama ifadesi giriniz.">
-</div>
-<div *ngIf="filterText" class="alert alert-success">
-{{filterText}} aradınız
-</div>
-<table *ngIf="dataLoaded==true" class="table">
-  <thead>
-    <tr>
-      <th>Car Name</th>
-      <th>Brand</th>
-      <th>Color</th>
-      <th>Model Year</th>
-      <th>Daily Price</th>
-      <th>VAT Price</th>
-      <th>Description</th>
-      <th>Image</th>
-    </tr>
-  </thead>
-  <tr *ngFor="let car of cars" routerLink="/cars/cardetail/{{car.carId}}">
-    <td >{{ car.carName | uppercase }}</td>
-    <td>{{ car.brandName }}</td>
-    <td>{{ car.colorName }}</td>
-    <td>{{ car.modelYear }}</td>
-    <td>{{ car.dailyPrice |currency}}</td>
-    <td>{{ car.dailyPrice | vatAdded:10 |currency }}</td>
-    <td>{{ car.description }}</td>
-    <img *ngIf="car.carImage.length == 0" class="image" [src]="imgUrl+default">
-    <img *ngIf="car.carImage.length != 0" class="image" alt="Image"  style="object-fit: contain;" [src]="imgUrl + car.carImage[0].imagePath" >
-  </tr>
-</table>

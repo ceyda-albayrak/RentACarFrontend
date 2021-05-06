@@ -6,12 +6,15 @@
       <tr>
         <th>User Id</th>
         <th>Company Name</th>
+        <th>First Last Name</th>
+        <th></th>
         
       </tr>
     </thead>
     <tr *ngFor="let customer of customers">
         <td>{{ customer.userId }}</td>
       <td>{{ customer.companyName }}</td>
+      <td>{{customer.lastName}}{{customer.firstName}}</td>
      
     </tr>
   </table>

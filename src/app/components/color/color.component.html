@@ -1,9 +1,42 @@
-  <ul class="list-group list-group-horizonta">
-    <h4>Araba Renkleri</h4>
-    <li (click)="setCurrentColor(color)"
-    routerLink="/cars/colors/{{color.colorId}}" 
-    *ngFor="let color of colors" 
-    [class]="getCurrentColorClass(color)">
-      {{color.colorName}}
-    </li>
-  </ul>
+
+<div class="accordion-item" style="margin-top: 10%;">
+  <h2 class="accordion-header" id="headingOne">
+    <button
+      class="accordion-button collapsed"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapseOne"
+      aria-expanded="true"
+      aria-controls="collapseOne"
+    >
+      Colors
+    </button>
+  </h2>
+  <div
+    id="collapseOne"
+    class="accordion-collapse collapse"
+    aria-labelledby="headingOne"
+    data-bs-parent="#accordionExample"
+  >
+    <div class="accordion-body">
+      <div class="mb-3">
+        <label for="filterText" class="form-label">Color Search</label>
+       
+        <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Search for a color.">
+      </div>
+      
+      <ul class="list-group">
+   
+        <li
+          *ngFor="let color of colors | colorFilter:filterText "
+          (click)="this.setCurrentColor(color)"
+          routerLink="colors/{{ color.colorId}}"
+          [class]="getCurrentColorClass(color)"
+        >
+          {{ color.colorName }} <button class="btn btn-warning" routerLink="/cars/colorupdate/{{color.colorId}}">Güncelle </button>
+          
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
