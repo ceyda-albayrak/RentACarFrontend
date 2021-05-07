@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './src/app/app.component';
 import { CarComponent } from './src/app/components/car/car.component';
@@ -14,14 +14,14 @@ import { RentalComponent } from './src/app/components/rental/rental.component';
 import { ColorComponent } from './src/app/components/color/color.component';
 import { CarDetailComponent } from './src/app/components/car-detail/car-detail.component';
 import { VatAddedPipe } from './src/app/pipes/vat-added.pipe';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterPipePipe } from './src/app/pipes/filter-pipe.pipe';
-import {ToastrModule } from 'ngx-toastr';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CartSummaryComponent } from './src/app/components/cart-summary/cart-summary.component';
 import { BrandFilterPipe } from './src/app/pipes/brand-filter.pipe';
 import { ColorFilterPipe } from './src/app/pipes/color-filter.pipe';
-import { RentalCarComponent } from './src/app/components/rental-car/rental-car.component'
+import { RentalCarComponent } from './src/app/components/rental-car/rental-car.component';
 import { BrandAddComponent } from './src/app/components/brand-add/brand-add.component';
 import { ColorAddComponent } from './src/app/components/color-add/color-add.component';
 import { CarAddComponent } from './src/app/components/car-add/car-add.component';
@@ -29,7 +29,7 @@ import { BrandUpdateComponent } from './src/app/components/brand-update/brand-up
 import { ColorUpdateComponent } from './src/app/components/color-update/color-update.component';
 import { CarUpdateComponent } from './src/app/components/car-update/car-update.component';
 import { LoginComponent } from './src/app/components/login/login.component';
-import {MatIconModule} from '@angular/material/icon';
+import { AuthInterceptor } from 'src/app/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -53,7 +53,7 @@ import {MatIconModule} from '@angular/material/icon';
     BrandUpdateComponent,
     ColorUpdateComponent,
     CarUpdateComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,16 +62,16 @@ import {MatIconModule} from '@angular/material/icon';
     FormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      positionClass:"toast-bottom-right"
+      positionClass: 'toast-bottom-right',
     }),
     MatSelectModule,
     NgbModule,
     ReactiveFormsModule,
-    MatIconModule
-  
-   
+
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor,multi:true}
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

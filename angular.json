@@ -32,14 +32,14 @@
             ],
             "styles": [
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "./node_modules/ngx-toastr/toastr.css",
-              "src/styles.css",
-              "./node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css"
+              "./node_modules/ngx-toastr/toastr.css"
+            
+             
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.min.js",
-               "./node_modules/bootstrap/dist/js/bootstrap.min.js",
-               "./node_modules/"
+               "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+             
             ]
 
             
