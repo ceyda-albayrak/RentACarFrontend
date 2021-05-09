@@ -21,7 +21,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CartSummaryComponent } from './src/app/components/cart-summary/cart-summary.component';
 import { BrandFilterPipe } from './src/app/pipes/brand-filter.pipe';
 import { ColorFilterPipe } from './src/app/pipes/color-filter.pipe';
-import { RentalCarComponent } from './src/app/components/rental-car/rental-car.component';
 import { BrandAddComponent } from './src/app/components/brand-add/brand-add.component';
 import { ColorAddComponent } from './src/app/components/color-add/color-add.component';
 import { CarAddComponent } from './src/app/components/car-add/car-add.component';
@@ -30,6 +29,9 @@ import { ColorUpdateComponent } from './src/app/components/color-update/color-up
 import { CarUpdateComponent } from './src/app/components/car-update/car-update.component';
 import { LoginComponent } from './src/app/components/login/login.component';
 import { AuthInterceptor } from 'src/app/interceptors/auth.interceptor';
+import { RegisterComponent } from './src/app/components/register/register.component';
+import { ValidateEqualModule } from 'ng-validate-equal';
+import { AdminComponent } from './src/app/components/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,6 @@ import { AuthInterceptor } from 'src/app/interceptors/auth.interceptor';
     CartSummaryComponent,
     BrandFilterPipe,
     ColorFilterPipe,
-    RentalCarComponent,
     BrandAddComponent,
     ColorAddComponent,
     CarAddComponent,
@@ -54,6 +55,8 @@ import { AuthInterceptor } from 'src/app/interceptors/auth.interceptor';
     ColorUpdateComponent,
     CarUpdateComponent,
     LoginComponent,
+    RegisterComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,6 +70,7 @@ import { AuthInterceptor } from 'src/app/interceptors/auth.interceptor';
     MatSelectModule,
     NgbModule,
     ReactiveFormsModule,
+    ValidateEqualModule
 
   ],
   providers: [

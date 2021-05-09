@@ -11,4 +11,5 @@ export interface Car {
     dailyPrice:number,
     description:string,
     carImage:CarImage[];
+    minFindex:number
 }

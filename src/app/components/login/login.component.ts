@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder,FormGroup,Validators,FormControl } from '@angular/forms';
+import { FormBuilder,FormGroup,Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/loginService/auth.service';
 
 @Component({
@@ -9,9 +11,9 @@ import { AuthService } from 'src/app/services/loginService/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  
   loginForm:FormGroup
-  constructor(private formBuilder:FormBuilder,private authService:AuthService,private toastrService:ToastrService) { }
+  constructor(private formBuilder:FormBuilder,private authService:AuthService,private toastrService:ToastrService,private router:Router) { }
 
   ngOnInit(): void {
     this.createLoginForm();
@@ -30,6 +32,8 @@ export class LoginComponent implements OnInit {
       this.authService.login(loginModel).subscribe(response=>{
          this.toastrService.info(response.message);
          localStorage.setItem("token",response.data.token);
+         localStorage.setItem("email",loginModel.email);
+         return this.router.navigate(['/cars'])
       },responseError=>{
        this.toastrService.error(responseError.error)
       })

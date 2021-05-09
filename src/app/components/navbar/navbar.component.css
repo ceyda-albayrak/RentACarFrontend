@@ -1,0 +1,23 @@
+.image{
+    width: 9%;
+    height: 9%;
+   margin-left: 5%;
+}
+
+.nav-link{
+    font-family: 'Reggae One', cursive;
+    font-size:30px;
+}
+
+.btn{
+    width: 90px;
+    margin-left: 20px;
+}
+
+.dropdown{
+    margin-right: 40%;
+}
+
+h5{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

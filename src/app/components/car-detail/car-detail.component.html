@@ -26,90 +26,9 @@
   </div>
 
   <a
-    (click)="triggerModal(modalData)"
+  routerLink="/cars/rentals/{{ car.carId }}"
     type="button"
     class="btn btn-success m-5"
   >
     Kirala
   </a>
-  <form [formGroup]="RentalActionForm" (ngSubmit)="actionBuild()">
-    <ng-template #modalData let-modal>
-      <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">
-          {{ car.carName }} {{ car.carId }}
-        </h4>
-        <button
-          type="button"
-          class="close"
-          aria-label="Close"
-          (click)="modal.dismiss('Cross click')"
-        >
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <label for="exampleInputEmail1">Kiralanan Araba</label>
-        <input
-          type="email"
-          class="form-control"
-          disabled="disabled"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-          placeholder="Enter email"
-          [value]="this.car.carName"
-        />
-        <label for="exampleInputEmail1">Müşteri Adı</label>
-        <input
-          type="email"
-          class="form-control"
-          disabled="disabled"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-          placeholder="Enter email"
-          [value]="this.car.carName"
-        />
-        <label for="example-date-input" class="col-4 col-form-label"
-          >Kiralama Tarihi</label
-        >
-        <div class="col-12">
-          <input
-            class="form-control"
-            type="date"
-            value="2011-08-19"
-            id="example-date-input"
-          />
-        </div>
-        <label for="example-date-input" class="col-4 col-form-label"
-          >Teslim Tarihi</label
-        >
-        <div class="col-12">
-          <input
-            class="form-control"
-            type="date"
-            value="2011-08-19"
-            id="example-date-input"
-          />
-        </div>
-
-        <a
-          (click)="rentalCar(car)"
-          type="button"
-          class="btn btn-success m-5"
-          *ngIf="rentalCar"
-          (click)="modal.dismiss('Cross click')"
-        >
-          Kirala
-        </a>
-      </div>
-      <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-danger"
-          (click)="modal.close('Save click')"
-        >
-          Close
-        </button>
-      </div>
-    </ng-template>
-  </form>
-</div>
