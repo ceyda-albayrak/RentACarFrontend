@@ -9,7 +9,7 @@
       aria-expanded="true"
       aria-controls="collapseOne"
     >
-      Colors
+      Colors &nbsp;&nbsp; <img src="../../../assets/Icons/color.png">
     </button>
   </h2>
   <div
@@ -33,7 +33,7 @@
           routerLink="colors/{{ color.colorId}}"
           [class]="getCurrentColorClass(color)"
         >
-          {{ color.colorName }} <button class="btn btn-warning" routerLink="/cars/colorupdate/{{color.colorId}}">Güncelle </button>
+          {{ color.colorName }} <button class="btn btn-warning" routerLink="/cars/colorupdate/{{color.colorId}}">Update </button>
           
         </li>
       </ul>

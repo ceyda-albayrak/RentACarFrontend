@@ -1,11 +1,11 @@
-<div class="content">
+<div class="content m-4">
   <div class="col-md-12">
     <div class="card" *ngIf="carDetails">
       <div class="card-header"><h5 class="title">Update Car</h5></div>
       <div class="card-body">
         <form [formGroup]="carUpdateForm">
           <div class="mb-3">
-            <label for="carName">Car Name</label>
+            <label for="carName"><strong>Car Name</strong></label>
             <div class="form-group">
               <input
                 type="text"
@@ -17,7 +17,7 @@
             </div>
           </div>
           <div class="mb-3">
-            <label for="brandName">Brand Name</label>
+            <label for="brandName"><strong>Brand Name</strong></label>
             <div class="form-group">
               <select class="form-control" formControlName="brandId">
                 <option *ngFor="let brand of brands" [ngValue]="brand.brandId">
@@ -27,7 +27,7 @@
             </div>
           </div>
           <div class="mb-3">
-            <label for="carName">Car Name</label>
+            <label for="carName"><strong>Car Name</strong></label>
             <div class="form-group">
               <select class="form-control" formControlName="colorId">
                 <option *ngFor="let color of colors" [ngValue]="color.colorId">
@@ -37,7 +37,7 @@
             </div>
           </div>
           <div class="mb-3">
-            <label for="carName">Model Year </label>
+            <label for="carName"><strong>Model Year </strong></label>
             <div class="form-group">
               <input
                 type="text"
@@ -49,7 +49,7 @@
             </div>
           </div>
           <div class="mb-3">
-            <label for="carName">Günlük Fiyat</label>
+            <label for="carName"><strong>Günlük Fiyat</strong></label>
             <div class="form-group">
               <input
                 type="text"
@@ -61,7 +61,7 @@
             </div>
           </div>
           <div class="mb-3">
-            <label for="carName">Açıklama</label>
+            <label for="carName"><strong>Açıklama</strong></label>
             <div class="form-group">
               <input
                 type="text"

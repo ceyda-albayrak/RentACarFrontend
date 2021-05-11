@@ -7,6 +7,7 @@ export class CarDetail {
   dailyPrice:number;
   modelYear:number;
   description:string;
+  minFindex:number
   
   
 }

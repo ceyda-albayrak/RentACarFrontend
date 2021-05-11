@@ -44,6 +44,9 @@ export class BrandUpdateComponent implements OnInit {
         (response) => {
           
           this.toastrService.success(response.message, 'Successfull');
+        },
+        responseError=>{
+          this.toastrService.error(responseError.error)
         }
        
       );

@@ -6,6 +6,7 @@ export class User{
     email:string
     passwordHash: Byte[];
     passwordSalt: Byte[];
+    password:string;
     status?:boolean
     findexPoint:number
 }

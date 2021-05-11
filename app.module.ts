@@ -32,6 +32,7 @@ import { AuthInterceptor } from 'src/app/interceptors/auth.interceptor';
 import { RegisterComponent } from './src/app/components/register/register.component';
 import { ValidateEqualModule } from 'ng-validate-equal';
 import { AdminComponent } from './src/app/components/admin/admin.component';
+import { ProfileComponent } from './src/app/components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { AdminComponent } from './src/app/components/admin/admin.component';
     LoginComponent,
     RegisterComponent,
     AdminComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

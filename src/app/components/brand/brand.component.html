@@ -9,7 +9,7 @@
       aria-expanded="true"
       aria-controls="collapseOne"
     >
-      Brands
+      Brands &nbsp;&nbsp; <img src="../../../assets/Icons/brand.png">
     </button>
   </h2>
   <div
@@ -32,7 +32,7 @@
           [class]="getCurrentBrandClass(brand)"
          
         >
-          {{ brand.brandName  }} <button class="btn btn-warning" routerLink="/cars/brandupdate/{{brand.brandId}}">Güncelle</button>
+          {{ brand.brandName  }} <button class="btn btn-warning" routerLink="/cars/brandupdate/{{brand.brandId}}">Update</button>
           
         </li>
       </ul>

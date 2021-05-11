@@ -1,73 +1,79 @@
-    <div class="row">
-    <div class="col-md-3">
-          
-      <app-brand></app-brand>
-      
-      <app-color></app-color>
-   </div>
-   <div class="col-md-9">
+<div class="row">
+  <div class="col-md-3">
+    <div class="brand m-3">
+    <app-brand></app-brand></div>
+    <div class="color m-3">
+    <app-color></app-color></div>
+  </div>
+  <div class="col-md-9">
     <div *ngIf="dataLoaded == false" class="spinner-border" role="status">
       <span class="visually-hidden">Loading...</span>
     </div>
-    <div class="mb-3">
-      <label for="filterText" class="form-label">Ürünlerde Arama</label>
+    <div class="search mb-3">
+      <span class="badge bg-info text-dark mb-3"><img src="../../../assets/Icons/search.png"> 
+        Search in Cars</span>
       <input
         type="text"
         [(ngModel)]="filterText"
         class="form-control"
         id="filterText"
-        placeholder="Arama ifadesi giriniz."
+        placeholder="Enter search phrase."
       />
     </div>
     <div *ngIf="filterText" class="alert alert-success">
-      {{ filterText }} aradınız
+      You searched {{ filterText }} 
     </div>
-    <table *ngIf="dataLoaded == true" class="table">
-      <thead>
-        <tr>
-          <th>Car Name</th>
-          <th>Brand</th>
-          <th>Color</th>
-          <th>Model Year</th>
-          <th>Daily Price</th>
-          <th>VAT Price</th>
-          <th>Description</th>
-          <th>Image</th>
-          <th>Detaylar</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let car of cars | filterPipe: filterText">
-          <td>{{ car.carName | uppercase }}</td>
-          <td>{{ car.brandName }}</td>
-          <td>{{ car.colorName }}</td>
-          <td>{{ car.modelYear }}</td>
-          <td>{{ car.dailyPrice }}₺</td>
-          <td>{{ car.dailyPrice | vatAdded: 10 }}₺</td>
-          <td>{{ car.description }}</td>
-          <img
-            *ngIf="car.carImage.length == 0"
-            class="image"
-            [src]="imgUrl + default"
-          />
-          <img
-            *ngIf="car.carImage.length != 0"
-            class="image"
-            alt="Image"
-            style="object-fit: contain"
-            [src]="imgUrl + car.carImage[0].imagePath"
-          />
-          <td >
-            <button routerLink="/cars/cardetail/{{ car.carId }}" type="button" class="btn btn-primary">Detaylar</button>
-            <button routerLink="/cars/carupdate/{{ car.carId }}" type="button" class="btn btn-warning">Güncelle</button>
-          </td>
-          <td>
-            
-          </td>
-        </tr>
-      </tbody>
-    </table>
 
+    <div class="cards" *ngIf="dataLoaded == true">
+      <div
+        class="card"
+        style="width: 18rem"
+        *ngFor="let car of cars | filterPipe: filterText"
+      >
+        <img
+          *ngIf="car.carImage.length == 0"
+          class="car-image-top"
+          style="width: 250px; height: 170px"
+          [src]="imgUrl + default"
+        />
+        <img
+          *ngIf="car.carImage.length != 0"
+          class="car-image-top"
+          alt="Image"
+          style="object-fit: contain; width: 286px; height: 170px"
+          [src]="imgUrl + car.carImage[0].imagePath"
+        />
+        <div class="card-body">
+          <h5 class="card-title text-center">{{ car.carName | uppercase }}</h5>
+          <hr />
+          <p class="card-text">
+            <strong>Brand:</strong> {{ car.brandName }} <br />
+            <strong>Color: </strong>{{ car.colorName }} <br />
+            <strong>Model Year: </strong> {{ car.modelYear }} <br />
+            <strong>Daily Price: </strong> {{ car.dailyPrice }}₺ <br />
+            <strong>VAT Price: </strong> {{ car.dailyPrice | vatAdded: 10 }}₺
+            <br />
+            <strong>Description: </strong> {{ car.description }}<br />
+            <strong>Findex Puanı: {{car.minFindex}} </strong>
+          </p>
+          <hr />
+
+          <button
+            routerLink="/cars/cardetail/{{ car.carId }}"
+            type="button"
+            class="btn btn-primary"
+          >
+            Details
+          </button>
+          <button
+            routerLink="/cars/carupdate/{{ car.carId }}"
+            type="button"
+            class="btn btn-warning"
+          >
+            Update
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

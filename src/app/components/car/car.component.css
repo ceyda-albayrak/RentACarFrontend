@@ -1,4 +1,21 @@
-.image{
+.card-image-top{
     width: 100px;
     height: 100px;
 }
+.card{
+    float: left;
+    margin-right: 3%;
+    margin-top: 1%;
+    
+}
+
+.btn{
+    margin-left: 10%;
+}
+
+.search{
+    margin-top: 20px;
+    width: 92%;
+   
+}
+

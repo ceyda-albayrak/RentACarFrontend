@@ -59,7 +59,6 @@ getUserId(){
    console.log("Çalıştı ")
    this.userService.getByMail(localStorage.getItem("email")).subscribe((response) => {
      this.user = response.data;
-     console.log(this.user)
    });
  }
 

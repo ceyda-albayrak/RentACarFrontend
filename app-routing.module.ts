@@ -11,6 +11,7 @@ import { ColorAddComponent } from 'src/app/components/color-add/color-add.compon
 import { ColorUpdateComponent } from 'src/app/components/color-update/color-update.component';
 import { CustomerComponent } from 'src/app/components/customer/customer.component';
 import { LoginComponent } from 'src/app/components/login/login.component';
+import { ProfileComponent } from 'src/app/components/profile/profile.component';
 import { RegisterComponent } from 'src/app/components/register/register.component';
 import { RentalComponent } from 'src/app/components/rental/rental.component';
 import { LoginGuard } from 'src/app/guards/login.guard';
@@ -33,7 +34,8 @@ const routes: Routes = [
   {path:"cars/carupdate/:id", component:CarUpdateComponent,canActivate:[LoginGuard]},
   {path:"login",component:LoginComponent},
   {path:"register",component:RegisterComponent},
-  {path:"admin",component:AdminComponent}
+  {path:"admin",component:AdminComponent,canActivate:[LoginGuard]},
+  {path:"profile",component:ProfileComponent,canActivate:[LoginGuard]}
 
 ];
 

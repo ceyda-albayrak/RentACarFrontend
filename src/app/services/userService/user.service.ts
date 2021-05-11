@@ -7,6 +7,7 @@ import { ListResponseModel } from '../../models/listResponseModel'
 import {User } from '../../models/user'
 import { LocalStorageService } from '../../services/localStorageService/local-storage.service'
 import { SingleResponseModel } from 'src/app/models/singleResponseModel';
+import { ResponseModel } from 'src/app/models/responseModel';
 
 @Injectable({
   providedIn: 'root'
@@ -26,9 +27,24 @@ export class UserService {
     return userId;
   }
 
-
+  getByEmail(email:string):Observable<User>{
+    return this.httpClient.get<User>('https://localhost:44378/api/users/getbymail?email='+email);
+  }
 
   getByMail(email:string):Observable<SingleResponseModel<User>>{
-    return this.httpClient.get<SingleResponseModel<User>>("https://localhost:44378/api/"+"users/getbymail?mail="+email);
+    return this.httpClient.get<SingleResponseModel<User>>("https://localhost:44378/api/"+"users/getbymail?email="+email);
+  }
+
+  profileUpdate(user:User):Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>('https://localhost:44378/api/users/updateprofile', {
+      user:{
+        'id': user.id,
+        'firstName': user.firstName,
+        'lastName': user.lastName,
+        'email': user.email,
+        'status':user.status
+      },
+      password:user.password
+    });
   }
 }
