@@ -8,6 +8,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 
 Proje Resimleri
+![login](https://user-images.githubusercontent.com/58356559/117742976-8ffde700-b20e-11eb-8c28-88f3dc9f626c.PNG)
 
 ![register](https://user-images.githubusercontent.com/58356559/117742944-84122500-b20e-11eb-9fe6-f6b5b91e921c.PNG)
 
@@ -17,4 +18,7 @@ Proje Resimleri
 
 ![Ekran Alıntısı3](https://user-images.githubusercontent.com/58356559/117742969-8e342380-b20e-11eb-8534-3eb42f8931f0.PNG)
 
-![login](https://user-images.githubusercontent.com/58356559/117742976-8ffde700-b20e-11eb-8c28-88f3dc9f626c.PNG)
+![detail](https://user-images.githubusercontent.com/58356559/117744897-2b448b80-b212-11eb-9970-71ae22f9feba.PNG)
+
+
+
